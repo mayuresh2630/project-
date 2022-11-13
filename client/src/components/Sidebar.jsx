@@ -15,28 +15,28 @@ const Sidebar = ({children}) => {
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
-            path:"/",
+            path:"/Dashboard",
             name:"Dashboard",
             icon:<FaTh/>
         },
        
         {
-            path:"/Dataentry",
+            path:"/Dashboard/Dataentry",
             name:"Dataentry",
             icon:<FaRegChartBar/>
         },
         {
-            path:"/Training",
+            path:"/Dashboard/Training",
             name:"Training/Certification",
             icon:<FaAward/>
         },
         {
-            path:"/Validation",
+            path:"/Dashboard/Validation",
             name:"Validation",
             icon:<FaCheckCircle/>
         },
         {
-            path:"/View",
+            path:"/Dashboard/View",
             name:"View",
             icon:<FaThList/>
         }
@@ -59,7 +59,7 @@ const Sidebar = ({children}) => {
                    ))
                }
            </div>
-           <main>{children}</main>
+           {/* <main></main> */}
         </div>
     );
 };

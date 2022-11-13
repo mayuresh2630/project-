@@ -13,12 +13,13 @@ export default function Header() {
         display: "flex",
         backgroundColor:"rgb(0,0,70)",
         height:"0px",
-        padding:"30px"
+        padding:"30px",
+        filter: "contrast(130%)"
         
       }}
       
     >
-      <img style={{marginLeft:"86%"}} src="images/rosenbergerr.png" />
+      <img style={{marginLeft:"86%",filter: "contrast(120%)"}} src="images/rosenbergerr.png" />
      
     </div>
   );
