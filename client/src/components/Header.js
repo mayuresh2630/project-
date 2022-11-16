@@ -16,6 +16,7 @@ export default function Header() {
         padding:"30px",
         filter: "contrast(130%)"
         
+        
       }}
       
     >

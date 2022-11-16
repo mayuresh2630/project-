@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard.jsx";
 import Training from "./pages/Training.jsx";
@@ -10,16 +10,30 @@ import Validation from "./pages/Validation.jsx";
 import View from "./pages/View.jsx";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
+  const [loggedIn] = useState(true)
+  
+
+  
   return (
     <div>
       <Header />
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login/>} />
+        <Route exact path="/" element={loggedIn ? (<Login/>): (<Navigate replace to={"Dashboard/"}/>)}/>
+           
+        
+          <Route path="/Register" element={<Register/>} >
+            
+          
+          </Route>
           <Route path="/Dashboard" >
+          
+          
+          
             <Route
               path=""
               element={<Layout>

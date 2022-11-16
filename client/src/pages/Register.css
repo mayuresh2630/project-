@@ -1,5 +1,5 @@
 
-.login {
+.Register {
     width: 400px;
     background: #fff;
     border: 1px solid #dddfe2;
@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-.login > input {
+.Register > input {
     border-radius: 8px;
     border: 2px solid #dddfe2;
     outline: none;
@@ -21,7 +21,7 @@
     font-size: 1rem;
 }
 
-.login > .button {
+.Register > .button {
     background: #1877f2;
     border: 1px solid #1877f2;
     color: #fff;
