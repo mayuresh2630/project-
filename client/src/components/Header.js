@@ -7,12 +7,12 @@ export default function Header() {
 
     <div
       style={{
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
         flexDirection: "column",
         display: "flex",
         backgroundColor:"rgb(0,0,70)",
-        height:"0px",
+  
         padding:"30px",
         filter: "contrast(130%)"
         
@@ -20,7 +20,7 @@ export default function Header() {
       }}
       
     >
-      <img style={{marginLeft:"86%",filter: "contrast(120%)"}} src="images/rosenbergerr.png" />
+      <img style={{filter: "contrast(120%)"}} src="images/rosenbergerr.png" />
      
     </div>
   );

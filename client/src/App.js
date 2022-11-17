@@ -23,7 +23,7 @@ const App = () => {
 
       <BrowserRouter>
         <Routes>
-        <Route exact path="/" element={loggedIn ? (<Login/>): (<Navigate replace to={"Dashboard/"}/>)}/>
+        <Route exact path="/" element={<Login/>}/>
            
         
           <Route path="/Register" element={<Register/>} >

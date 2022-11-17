@@ -95,7 +95,7 @@ function Dataentry() {
       <h1 align="center"></h1>
       <h4 align="center"></h4>
       <input type="file" onChange={importExcel} />
-      <button style={{ bottom: "100px",position:"fixed",left:"1020px",marginBottom:"200px",fontSize: "19.2px",padding: "5px 25px",borderRadius: "9px",backgroundColor: "#008CBA",color:"white",transitionDuration: "0.4s",cursor:"pointer"}} onClick={importToDatabase}>Submit</button>
+      <button style={{position:"fixed",left:"1020px",fontSize: "19.2px",padding: "5px 25px",borderRadius: "9px",backgroundColor: "#008CBA",cursor:"pointer"}} onClick={importToDatabase}>Submit</button>
       
       
       <MaterialTable  title="" data={data} columns={colDefs} 

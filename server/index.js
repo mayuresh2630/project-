@@ -11,7 +11,7 @@ app.use(express.urlencoded())
 
 /// DATABASE CONNECTION
 mongoose.connect(
-  "mongodb://localhost:27017/ExcelDb?readPreference=primary&appname=MongoDB%20Compass&ssl=false"+"mongodb://localhost:27017/myLoginRegisterDB",
+  "mongodb://localhost:27017/ExcelDb?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
   { useNewUrlParser: true}
 );
 
@@ -62,7 +62,7 @@ app.post("/Login", (req, res)=> {
   })
 }) 
 
-app.post("/Register",async (req, res)=> {
+app.post("/Register",(req, res)=> {
   const { name, email, password} = req.body;
   //const password = await bcrypt.hash(plainTextPassword,salt);
   User.findOne({email: email}, (err, user) => {
@@ -74,6 +74,7 @@ app.post("/Register",async (req, res)=> {
               email,
               password
           })
+          
           user.save(err => {
               if(err) {
                   res.send(err)
