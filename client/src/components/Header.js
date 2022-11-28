@@ -13,7 +13,7 @@ export default function Header() {
         display: "flex",
         backgroundColor:"rgb(0,0,70)",
   
-        padding:"30px",
+        padding:"10px",
         filter: "contrast(130%)"
         
         

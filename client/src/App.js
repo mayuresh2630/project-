@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard.jsx";
 import Training from "./pages/Training.jsx";
@@ -13,27 +13,15 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 const App = () => {
-  const [loggedIn] = useState(true)
-  
-
-  
   return (
     <div>
       <Header />
 
       <BrowserRouter>
         <Routes>
-        <Route exact path="/" element={<Login/>}/>
-           
-        
-          <Route path="/Register" element={<Register/>} >
-            
-          
-          </Route>
+          <Route path="/" element={<Login/>} />
+          <Route path="/Register" element={<Register/>} />
           <Route path="/Dashboard" >
-          
-          
-          
             <Route
               path=""
               element={<Layout>
