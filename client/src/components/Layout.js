@@ -5,9 +5,9 @@ import Sidebar from './Sidebar'
 
 export default function Layout({children}) {
   const navigate=useNavigate()
-  const [loggedIn] = useState(true)
    useEffect(function() {
-    if(!loggedIn){navigate("/")}
+    let token=localStorage.getItem("token")
+    if(!token){navigate("/")}
    },[])
   return (
     <div style={{display:"flex"}}><Sidebar/>
