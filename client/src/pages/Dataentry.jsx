@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 import XLSX from "xlsx";
-import Axios from 'axios' 
-
+import Axios from "axios";
 
 const EXTENSIONS = ["xlsx", "xls", "csv"];
 function Dataentry() {
@@ -28,27 +27,33 @@ function Dataentry() {
     });
     return rows;
   };
- 
 
   const importExcel = (e) => {
     const file = e.target.files[0];
-    console.log("file1",file);
+    console.log("file1", file);
     const reader = new FileReader();
-    console.log("file2",reader);
+    console.log("file2", reader);
     reader.onload = (event) => {
       //parse data
 
       const bstr = event.target.result;
-    
-      const workBook = XLSX.read(bstr, { type: "binary" });
+
+      const workBook = XLSX.read(bstr, {
+        type: "binary",
+        dateNF: "yyyy/mm/dd;@",
+        cellDates: true,
+      });
       console.log("data 1", workBook);
-        var x=0;
+      var x = 0;
       //get first sheet
       const sheet_namelist = workBook.SheetNames;
-      
+
       //convert to array
       //console.log("data 2", workSheet);
-      fileData = XLSX.utils.sheet_to_json(workBook.Sheets[sheet_namelist[x]], { header: 1, raw: false });
+      fileData = XLSX.utils.sheet_to_json(workBook.Sheets[sheet_namelist[x]], {
+        header: 1,
+        raw: true,
+      });
       console.log("data 3", fileData);
       // console.log(fileData)
       const headers = fileData[0];
@@ -58,15 +63,19 @@ function Dataentry() {
 
       //removing header
       fileData.splice(0, 1);
-      finalData=convertToJson(headers, fileData);
+      finalData = convertToJson(headers, fileData);
+      console.log("data 6",finalData)
+      finalData=finalData.map((dataOne)=>{
+        return {...dataOne,DateJoin:`${dataOne.DOJ?.getFullYear()}/${dataOne.DOJ?.getMonth()}/${dataOne.DOJ?.getDate()}`,DOJ:`${dataOne.DOJ?.toDateString()}`}
+      })
+      console.log("data 7",finalData)
       setData(finalData);
       
-      console.log("data 5",fileData)
+
+      console.log("data 5", fileData);
       //adding to database...
-        //alert("varad boi");
-       // console.log("data",fileData);
-        
-      
+      //alert("varad boi");
+      // console.log("data",fileData);
     };
 
     if (file) {
@@ -81,63 +90,102 @@ function Dataentry() {
     }
   };
   const importToDatabase = (e) => {
-   // setData(finalData);
-   console.log("api",data);
-    Axios.post('http://localhost:3001/insert',{data : data}).then(()=>{
-      alert("success...")
-    }).catch(()=>{
-      alert("sorry ");
-    })
-
+    // setData(finalData);
+    console.log("api", data);
+    Axios.post("http://localhost:3001/insert", { data: data })
+      .then(() => {
+        alert("success...");
+      })
+      .catch(() => {
+        alert("sorry ");
+      });
   };
   return (
-    <div style={{margin: "0px", width:"100%", height:"100%", marginTop:"80px", padding: "12px 20px", }} className="App">
+    <div
+      style={{
+        margin: "0px",
+        width: "100%",
+        height: "100%",
+        marginTop: "50px",
+        padding: "12px 20px",
+      }}
+      className="App"
+    >
       <h1 align="center"></h1>
       <h4 align="center"></h4>
-      <input  type="file" onChange={importExcel} />
-      <button style={{AlignItems:"center",fontSize: "15px",padding: "5px 25px",borderRadius: "9px",backgroundColor: "#008CBA",cursor:"pointer"}} onClick={importToDatabase}>Submit</button>
-      
-      
-      <MaterialTable  title="" data={data} columns={colDefs} 
-      editable={{
-        onRowAdd:(newRow)=>new Promise((resolve,reject)=>{
-             setData([...data,newRow])
-             console.log("data after row add",...data);   
-             setTimeout(()=>resolve(),500)
-        }),
-        onRowUpdate:(newData,oldData)=>new Promise((resolve,reject)=>{
-          const dataUpdate = [...data];
-                    const index = oldData.tableData.id;
-                    dataUpdate[index] = newData;
-                    console.log("updated data",newData);
-                    setData([...dataUpdate]);
-                    console.log("full updated data",dataUpdate);
+      <input  style={{
           
-          setTimeout(()=>resolve(),500)
-     }),
-     onRowDelete: oldData =>
-     new Promise((resolve, reject) => {
-         setTimeout(() => {
-             const dataDelete = [...data];
-             const index = oldData.tableData.id;
-             dataDelete.splice(index, 1);
-             setData([...dataDelete]);
-             console.log("datadeleted",dataDelete);
-             
-             console.log("final updated data",data);
-             resolve();
-         }, 500);
-         
-     })
-    
-      }}
-      
-      
-      options={{ pageSizeOptions: [3,5,10,20,50], exportButton: true, exportAllData: true ,actionsColumnIndex:-1,addRowPosition:"first",paginationType:"stepped",paginationPosition:"top",sorting:true,grouping:true}} />
+          fontSize: "15px",
+          
+          
+          
+          cursor: "pointer",
+        }} type="file" onChange={importExcel} />
+      <button
+        style={{
+          
+          fontSize: "15px",
+          padding: "5px 25px",
+          borderRadius: "10px",
+          backgroundColor: "#008CBA",
+          cursor: "pointer",
+        }}
+        onClick={importToDatabase}
+      >
+        Submit
+      </button>
+
+      <MaterialTable
+        title=""
+        data={data}
+        columns={colDefs}
+        editable={{
+          onRowAdd: (newRow) =>
+            new Promise((resolve, reject) => {
+              setData([...data, newRow]);
+              console.log("data after row add", ...data);
+              setTimeout(() => resolve(), 500);
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise((resolve, reject) => {
+              const dataUpdate = [...data];
+              const index = oldData.tableData.id;
+              dataUpdate[index] = newData;
+              console.log("updated data", newData);
+              setData([...dataUpdate]);
+              console.log("full updated data", dataUpdate);
+
+              setTimeout(() => resolve(), 500);
+            }),
+          onRowDelete: (oldData) =>
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                const dataDelete = [...data];
+                const index = oldData.tableData.id;
+                dataDelete.splice(index, 1);
+                setData([...dataDelete]);
+                console.log("datadeleted", dataDelete);
+
+                console.log("final updated data", data);
+                resolve();
+              }, 500);
+            }),
+        }}
+        options={{
+          pageSizeOptions: [3, 5, 10, 20, 50],
+          exportButton: true,
+          exportAllData: true,
+          actionsColumnIndex: -1,
+          addRowPosition: "first",
+          paginationType: "stepped",
+          paginationPosition: "top",
+          sorting: true,
+          grouping: true,
+        }}
+      />
     </div>
-    
-    
   );
 }
 
 export default Dataentry;
+//`${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
