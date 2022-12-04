@@ -11,6 +11,7 @@ import View from "./pages/View.jsx";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Induction from "./pages/Induction";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/Register" element={<Register/>} />
+          <Route path="/Induction" element={<Induction/>} />
           <Route path="/Dashboard" >
             <Route
               path=""
