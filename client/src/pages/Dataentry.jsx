@@ -97,7 +97,7 @@ function Dataentry() {
   const importToDatabase = (e) => {
     // setData(finalData);
     console.log("api", data);
-    Axios.post("http://localhost:3001/insert", { data: data })
+    Axios.post("http://localhost:4000/insert", { data: data })
       .then(() => {
         alert("success...");
       })

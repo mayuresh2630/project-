@@ -35,7 +35,7 @@ const View = () => {
       setLoading(false);
       setGeneratedData(response.data.data);
       setGenerated(true);
-    } catch (error) {}
+    } catch (error) {console.log("error",error)}
   }
   return (
     <div className="calender">

@@ -43,6 +43,8 @@ CONTRACTOR: {
 
 const ExcelModel = mongoose.model("excel", ExcelSchema);
 
-module.exports = ExcelModel;
+// module.exports = ExcelModel;
+exports.ExcelSchema=ExcelSchema
+exports.ExcelModel=ExcelModel
 
 

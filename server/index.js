@@ -2,8 +2,13 @@ const express = require("express");
 const app = express();
 const cors=require("cors");
 const mongoose = require("mongoose");
-const ExcelModel = require("./models/Excel");
+const ExcelModel = require("./models/excel");
 const User = require("./models/Loginschema")
+const { Excel } = require("./models/excel");
+const excels = require('./routes/excels');
+//const express = require("express");
+const router = express.Router();
+
 
 app.use(cors());
 app.use(express.json());
@@ -42,6 +47,7 @@ app.post("/insert", async (req, res) => {
   res.send("Inserted DATA");
   } catch (error) {
     res.send(error);
+    console.log("error",error)
   }
 
   
@@ -85,10 +91,66 @@ app.post("/Register",(req, res)=> {
       }
   })
   
-}) 
+})
 
+// router.get("/", async (req, res) => {
+//     console.log("test");
+//     console.log("test1", genres);
+//     try {
+//       const excelData = await ExcelModel.find();
+//       res.send({status:true,data:excelData});
+//     } catch (error) {
+//       res.send({status:false,error})
+//     }
+//   });
+  
+//   router.get("/bydept", async (req, res) => {
+//     try {
+//       const excelData = await ExcelModel.find({ Dept: req.query.dept });
+//     res.send({status:true,data:excelData});
+//     } catch (error) {
+      
+//       res.send({status:false,error})
+//     }
+//   });
+  
+//   router.get("/filter", async (req, res) => {
+//     try {
+//       let temp = {};
+//     const { query } = req;
+//     if (query.dept) {
+//       temp.Dept = query.dept;
+//     }
+//     if (query.fromDate && query.toDate) {
+//       temp.DateJoin = {
+//         $gte: new Date(new Date(req.query.fromDate).setHours(00, 00, 00)),
+//         $lt: new Date(new Date(req.query.toDate).setHours(23, 59, 59)),
+//       };
+//     }
+//     console.log("test", temp);
+//     const excelData = await ExcelModel.find(temp);
+//     //   console.log("test1",genres)
+//     res.send({status:true,data:excelData});
+      
+//     } catch (error) {
+//       res.send({status:false,error})
+//     }
+    
+//   });
+//   router.get("/bydate", async (req, res) => {
+//     console.log("test", req);
+//     const genres = await ExcelModel.find({
+//       DateJoin: {
+//         $gte: new Date(new Date(req.query.fromDate).setHours(00, 00, 00)),
+//         $lt: new Date(new Date(req.query.toDate).setHours(23, 59, 59)),
+//       },
+//     });
+//     //   console.log("test1",genres)
+//     res.send(genres);
+//   });
 
-
-app.listen(3001, () => {
+// module.exports = router;
+app.use('/api/excels', excels);
+app.listen(4000, () => {
   console.log("You are connected!");
 });
