@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ExcelSchema = new mongoose.Schema({
-  SLNO: {
+  "SL NO": {
     type: Number,
    // required: true,
     unique: true,
@@ -10,17 +10,20 @@ DOJ: {
   type: String,
   //required: true,
 },
-EMPCODE: {
+DateJoin:{
+ type:Date
+},
+"EMP CODE": {
     type: Number,
     //required: true,
     unique:true,
 },
-EMPLOYEENAME: {
+"EMPLOYEE NAME": {
   type: String,
   //required: true,
 },
 
-FATHERNAME: {
+"FATHER NAME": {
   type: String,
   //required: true,
 },
@@ -28,7 +31,7 @@ EDUCATION: {
   type: String,
   //required: true,
 },
-DEPT: {
+"Dept": {
   type: String,
  // required: true,
 },

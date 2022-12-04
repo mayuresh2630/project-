@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import ContextProvider from "./components/Context/Context";
 import reportWebVitals from "./reportWebVitals";
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(

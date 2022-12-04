@@ -53,6 +53,7 @@ const Login = ({ setLoginUser }) => {
   };
 
   return (
+    <div className="login-main d-flex justify-content-center align-items-center" >
     <div className="login">
       <h2>LOGIN</h2>
       {/* <h1>Login</h1>
@@ -88,10 +89,11 @@ const Login = ({ setLoginUser }) => {
             <option value="Option3">Supervisor</option>
           </select>
         </div>
-        <div className="button">
+        <div className="button mt-5">
           <input type="submit" value="Log In" onClick={() => handleSubmit()} />
         </div>
       </form>
+    </div>
     </div>
   );
 };

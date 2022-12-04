@@ -1,11 +1,7 @@
-
+.login-main{}
 .login {
     margin: 0;
-    bottom: 25%;
-    left: 50%;
-    position: absolute;
     text-align: center;
-    transform: translateX(-50%);
     background-color: rgb(10, 31, 92);
     border-radius: 9px;
     border-top: 10px solid #6a5bf0;
@@ -47,7 +43,6 @@
     width: 340px;
     height: 49px;
     font-size: 16px;
-    position: absolute;
     top: 79%;
     left: 8%;
     transition: 0.3s;

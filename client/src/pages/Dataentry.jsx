@@ -57,6 +57,7 @@ function Dataentry() {
       console.log("data 3", fileData);
       // console.log(fileData)
       const headers = fileData[0];
+
       const heads = headers.map((head) => ({ title: head, field: head }));
       setColDefs(heads);
       console.log("data 4", headers);
@@ -66,7 +67,11 @@ function Dataentry() {
       finalData = convertToJson(headers, fileData);
       console.log("data 6",finalData)
       finalData=finalData.map((dataOne)=>{
-        return {...dataOne,DateJoin:`${dataOne.DOJ?.getFullYear()}/${dataOne.DOJ?.getMonth()}/${dataOne.DOJ?.getDate()}`,DOJ:`${dataOne.DOJ?.toDateString()}`}
+        return {...dataOne,DateJoin:`${dataOne.DOJ?.valueOf()||new Date().valueOf()}`,DOJ:`${dataOne.DOJ?.toDateString()}`}
+      })
+      finalData=finalData.filter((dataTwo)=>{
+        if(dataTwo.Dept)return true
+        return false
       })
       console.log("data 7",finalData)
       setData(finalData);
