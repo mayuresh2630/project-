@@ -12,31 +12,56 @@ import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Induction from "./pages/Induction";
+import Powerc from "./pages/Powerc";
+import Storec from "./pages/Storec";
+import FOc from "./pages/FOc";
+
 
 const App = () => {
   return (
     <div>
       <Header />
+      
+       
+      
 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/Induction" element={<Induction/>} />
+          <Route path="/Powerc" element={<Powerc/>} />
+          <Route path="/Storec" element={<Storec/>} />
+          <Route path="/FOc" element={<FOc/>} />
+
+
+          
           <Route path="/Dashboard" >
             <Route
               path=""
               element={<Layout>
-                <div style={{textAlign:"center",fontSize:"100px",margin:"10%",width:"100%"}}>
+                <div className="bgimg">
+                <div className="text" >
+                  <h1>
+              
                   WELCOME
                   <br />
                   TO <br />
                   ROSENBERGER'S DASHBOARD
+                  </h1>
+                 
                 </div>
+                </div>
+                
                 </Layout>
               }
             />
-            <Route path="Training" element={<Layout><Training /></Layout>} />
+            {/* <Route path="Training" element={<Layout><Training /></Layout>} /> */}
+            <Route path="Training"> 
+            <Route path="" element={<Layout><Training /></Layout>} />
+
+              <Route path=":dept" element={<Layout><Induction/></Layout>}/>
+            </Route>
             <Route path="Dataentry" element={<Layout><Dataentry /> </Layout>} />
             <Route path="Validation" element={<Layout><Validation /></Layout>} />
             <Route path="View" element={<Layout><View /></Layout>} />

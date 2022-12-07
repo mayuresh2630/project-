@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
 
-export default function DisplayTable({ tableData,title }) {
+export default function FOview({ tableData }) {
   return (
     <div>
       <Container maxWidth="">
@@ -11,22 +11,22 @@ export default function DisplayTable({ tableData,title }) {
           style={{
             backgroundColor: "white",
             border: "1px solid black",
-            maxWidth:"100%"
+            maxWidth:"50%"
           }}
         >
           <div className="img">
             <img
               style={{ maxWidth: "80%", marginLeft:"100px"}}
-              src={title?title:process.env.PUBLIC_URL + "/images/heads.png"}
+              src={process.env.PUBLIC_URL + "/images/heads.png"}
             />
           </div>
           <table>
             <tr>
-              <th>&nbsp;&nbsp;&nbsp;&nbsp;Participant&nbsp;&nbsp;&nbsp;&nbsp;</th>
-              <th> &nbsp;&nbsp;&nbsp;&nbsp;Area of Operation&nbsp;&nbsp;&nbsp;&nbsp; </th>
-              <th>&nbsp;&nbsp;&nbsp;&nbsp;Employee Signature&nbsp;&nbsp;&nbsp;&nbsp;</th>
-              <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;</th>
-              <th>&nbsp;&nbsp;&nbsp;&nbsp;Trainer Name and Signature&nbsp;&nbsp;</th>
+              <th>Participant</th>
+              <th>Area of Operation</th>
+              <th>Employee Signature</th>
+              <th>Date</th>
+              <th>Trainer Name and Signature</th>
             </tr>
             {tableData &&
               tableData.map((data) => (
@@ -46,5 +46,3 @@ export default function DisplayTable({ tableData,title }) {
     </div>
   );
 }
-
-

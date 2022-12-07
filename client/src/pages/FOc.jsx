@@ -6,9 +6,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DateRangePicker } from "react-date-range";
 import Axios from "axios";
-import Viewtable from "./Viewtable";
+import DisplayTable from "./DisplayTable";
+import FOview from "./FOview";
 
-const View = () => {
+const FOc = () => {
   const [dept, setDept] = React.useState("");
   const [loading, setLoading] = React.useState("");
   const [generated, setGenerated] = React.useState(false);
@@ -77,15 +78,15 @@ const View = () => {
         {generated ? "Generated" : "Generate"}
       </button>
       {generated && generatedData ? (
-        <Viewtable tableData={generatedData} />
+        <FOview tableData={generatedData} />
       ) : null}
     </div>
   );
 };
 const options = [
-  { value: "", show: "all" },
+  // { value: "", show: "All" },
   { value: "FO", show: "FO" },
-  { value: "STORE", show: "STORE" },
-  { value: "power", show: "power" },
+  // { value: "STORE", show: "STORE" },
+  // { value: "power", show: "power" },
 ];
-export default View;
+export default FOc;

@@ -63,19 +63,22 @@ function Dataentry() {
       console.log("data 4", headers);
 
       //removing header
-      fileData.splice(0, 1);
+      fileData.splice(0,1);
       finalData = convertToJson(headers, fileData);
-      console.log("data 6",finalData)
-      finalData=finalData.map((dataOne)=>{
-        return {...dataOne,DateJoin:`${dataOne.DOJ?.valueOf()||new Date().valueOf()}`,DOJ:`${dataOne.DOJ?.toDateString()}`}
-      })
-      finalData=finalData.filter((dataTwo)=>{
-        if(dataTwo.Dept)return true
-        return false
-      })
-      console.log("data 7",finalData)
+      console.log("data 6", finalData);
+      finalData = finalData.map((dataOne) => {
+        return {
+          ...dataOne,
+          DateJoin: `${dataOne.DOJ?.valueOf() || new Date().valueOf()}`,
+          DOJ: `${dataOne.DOJ?.toDateString()}`,
+        };
+      });
+      finalData = finalData.filter((dataTwo) => {
+        if (dataTwo.Dept) return true;
+        return false;
+      });
+      console.log("data 7", finalData);
       setData(finalData);
-      
 
       console.log("data 5", fileData);
       //adding to database...
@@ -113,32 +116,22 @@ function Dataentry() {
         height: "100%",
         marginTop: "50px",
         padding: "12px 20px",
+       
       }}
       className="App"
     >
       <h1 align="center"></h1>
       <h4 align="center"></h4>
-      <input  style={{
-          
-          fontSize: "15px",
-          
-          
-          
-          cursor: "pointer",
-        }} type="file" onChange={importExcel} />
-      <button
+      <input
         style={{
-          
           fontSize: "15px",
-          padding: "5px 25px",
-          borderRadius: "10px",
-          backgroundColor: "#008CBA",
+
           cursor: "pointer",
         }}
-        onClick={importToDatabase}
-      >
-        Submit
-      </button>
+        type="file"
+        onChange={importExcel}
+      />
+     
 
       <MaterialTable
         title=""
@@ -183,11 +176,25 @@ function Dataentry() {
           actionsColumnIndex: -1,
           addRowPosition: "first",
           paginationType: "stepped",
-          paginationPosition: "top",
+          paginationPosition: "bottom",
           sorting: true,
           grouping: true,
         }}
       />
+       <button
+        style={{
+          fontSize: "15px",
+          padding: "5px 25px",
+          borderRadius: "10px",
+          backgroundColor: "#008CBA",
+          cursor: "pointer",
+          marginTop:"20px"
+          
+        }}
+        onClick={importToDatabase}
+      >
+        Submit
+      </button>
     </div>
   );
 }

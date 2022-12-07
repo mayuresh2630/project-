@@ -20,7 +20,7 @@ export default function Header() {
       }}
       
     >
-      <img style={{filter: "contrast(120%)"}} src="images/rosenbergerr.png" />
+      <img style={{filter: "contrast(120%)"}} height="50px" src={process.env.PUBLIC_URL + "/images/rosenbergerr.png"} />
      
     </div>
   );

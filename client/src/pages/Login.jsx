@@ -53,6 +53,7 @@ const Login = ({ setLoginUser }) => {
   };
 
   return (
+    <div className="bg-1">
     <div className="login-main d-flex justify-content-center align-items-center" >
     <div className="login">
       <h2>LOGIN</h2>
@@ -93,6 +94,7 @@ const Login = ({ setLoginUser }) => {
           <input type="submit" value="Log In" onClick={() => handleSubmit()} />
         </div>
       </form>
+    </div>
     </div>
     </div>
   );

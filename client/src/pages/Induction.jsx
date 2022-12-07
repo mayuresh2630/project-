@@ -7,9 +7,12 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DateRangePicker } from "react-date-range";
 import Axios from "axios";
 import DisplayTable from "./DisplayTable";
+import { useParams } from "react-router-dom";
+import "./Induction.css"
 
 const Induction = () => {
-  const [dept, setDept] = React.useState("");
+  const {dept:department}=useParams()
+  const [dept, setDept] = React.useState(department=="induction"?"":department);
   const [loading, setLoading] = React.useState("");
   const [generated, setGenerated] = React.useState(false);
   const [date, setDate] = React.useState({
@@ -39,7 +42,7 @@ const Induction = () => {
   }
   return (
     <div className="calender">
-      {/* <div className="d-flex">
+      <div className="d-flex">
         <div>
           <p>from date</p>
           <input
@@ -59,8 +62,8 @@ const Induction = () => {
             value={date.endDate}
           />
         </div>
-      </div> */}
-      <div>
+      </div>
+      {/* <div>
         <p>dept</p>
         <select
           id="selectsuccess"
@@ -72,20 +75,33 @@ const Induction = () => {
             <option value={option.value}>{option.show}</option>
           ))}
         </select>
-      </div>
+      </div> */}
       <button className="mt-4" disabled={loading} onClick={generate}>
         {generated ? "Generated" : "Generate"}
       </button>
       {generated && generatedData ? (
-        <DisplayTable tableData={generatedData} />
+        <DisplayTable tableData={generatedData} title={process.env.PUBLIC_URL + images[department]} />
       ) : null}
     </div>
   );
 };
 const options = [
-  { value: "", show: "all" },
-  { value: "FO", show: "FO" },
-  { value: "STORE", show: "STORE" },
-  { value: "power", show: "power" },
+  { value: "", show: "All" },
+  // { value: "FO", show: "FO" },
+  // { value: "STORE", show: "STORE" },
+  // { value: "power", show: "power" },
 ];
+
+const images= {
+  induction:"/images/induction1.png",
+  FO:"/images/FO.png",
+  POWER:"/images/power.png",
+  STORE:"/images/ofc.png",
+  AISG:"/images/aisg.png",
+  ENTERPRISE:"/images/enterprise.png",
+  RF:"/images/rf.png",
+  OFC:"/images/ofc.png"
+
+
+}
 export default Induction;
