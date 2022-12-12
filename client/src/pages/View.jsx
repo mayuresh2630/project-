@@ -21,7 +21,7 @@ const View = () => {
     try {
       setLoading(true);
       let response = await Axios.get(
-        `http://localhost:4000/api/excels/filter?${dept && `dept=${dept}&`}${
+`https://deploy-api-5fzq.onrender.com/api/excels/filter?${dept && `dept=${dept}&`}${
           date.startDate &&
           date.endDate &&
           `fromDate=${date.startDate}&toDate=${date.endDate}`

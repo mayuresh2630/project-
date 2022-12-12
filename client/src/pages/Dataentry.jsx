@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MaterialTable from "material-table";
 import XLSX from "xlsx";
 import Axios from "axios";
-
+export const url="https://deploy-api-5fzq.onrender.com";
 const EXTENSIONS = ["xlsx", "xls", "csv"];
 function Dataentry() {
   const [colDefs, setColDefs] = useState();
@@ -74,7 +74,7 @@ function Dataentry() {
         };
       });
       finalData = finalData.filter((dataTwo) => {
-        if (dataTwo.Dept) return true;
+        if (dataTwo.Department) return true;
         return false;
       });
       console.log("data 7", finalData);
@@ -100,7 +100,7 @@ function Dataentry() {
   const importToDatabase = (e) => {
     // setData(finalData);
     console.log("api", data);
-    Axios.post("http://localhost:4000/api/excels/insert", { data: data })
+    Axios.post(url +"/api/excels/insert", { data: data })
       .then(() => {
         alert("success...");
       })

@@ -9,7 +9,7 @@ import Axios from "axios";
 import DisplayTable from "./DisplayTable";
 import { useParams } from "react-router-dom";
 import "./Induction.css"
-
+import url from "./Dataentry";
 const Induction = () => {
   const {dept:department}=useParams()
   const [dept, setDept] = React.useState(department=="induction"?"":department);
@@ -24,7 +24,7 @@ const Induction = () => {
     try {
       setLoading(true);
       let response = await Axios.get(
-        `http://localhost:4000/api/excels/filter?${dept && `dept=${dept}&`}${
+      url+`/api/excels/filter?${dept && `dept=${dept}&`}${
           date.startDate &&
           date.endDate &&
           `fromDate=${date.startDate}&toDate=${date.endDate}`
