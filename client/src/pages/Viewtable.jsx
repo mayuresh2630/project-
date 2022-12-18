@@ -28,7 +28,7 @@ export default function Viewtable({ tableData }) {
                   <td>{data.Department}</td>
                   <td>{data[""]}</td>
                   <td>{data.DOJ}</td>
-                  <td>Mr. Allwin Lima</td>
+                  <td>Mr. Allwin </td>
                 </tr>
               ))}
           </table>
