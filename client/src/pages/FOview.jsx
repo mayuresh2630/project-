@@ -31,11 +31,11 @@ export default function FOview({ tableData }) {
             {tableData &&
               tableData.map((data) => (
                 <tr>
-                  <td>{data["EMPLOYEE NAME"]}</td>
-                  <td>{data.Dept}</td>
+                  <td>{data["Employee Name"]}</td>
+                  <td>{data.Department}</td>
                   <td>{data[""]}</td>
                   <td>{data.DOJ}</td>
-                  <td>{data[""]}</td>
+                  <td>Mr. Allwin Lima</td>
                 </tr>
               ))}
               

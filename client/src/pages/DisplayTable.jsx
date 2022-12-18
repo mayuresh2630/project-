@@ -35,7 +35,7 @@ export default function DisplayTable({ tableData,title }) {
                   <td>{data.Department}</td>
                   <td>{data[""]}</td>
                   <td>{data.DOJ}</td>
-                  <td>{data[""]}</td>
+                  <td>Mr.Allwin Lima</td>
                 </tr>
               ))}
               
