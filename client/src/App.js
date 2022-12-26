@@ -15,7 +15,7 @@ import Induction from "./pages/Induction";
 import Powerc from "./pages/Powerc";
 import Storec from "./pages/Storec";
 import FOc from "./pages/FOc";
-
+import Matrix from "./pages/Matrix";
 
 const App = () => {
   return (
@@ -33,7 +33,8 @@ const App = () => {
           <Route path="/Powerc" element={<Powerc/>} />
           <Route path="/Storec" element={<Storec/>} />
           <Route path="/FOc" element={<FOc/>} />
-
+          <Route path="/Matrix" element={<Matrix/>} />
+          
 
           
           <Route path="/Dashboard" >
